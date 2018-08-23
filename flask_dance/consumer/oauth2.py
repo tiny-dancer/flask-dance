@@ -179,7 +179,7 @@ class OAuth2ConsumerBlueprint(BaseOAuthConsumerBlueprint):
     def login(self):
         log.debug("client_id = %s", self.client_id)
         self.session.redirect_uri = url_for(
-            ".authorized", next=request.args.get('next'), _external=True,
+            ".authorized", next=request.args.get('next'), _external=True, _scheme='https'
         )
         url, state = self.session.authorization_url(
             self.authorization_url, state=self.state,
